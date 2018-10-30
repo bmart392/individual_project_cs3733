@@ -53,8 +53,6 @@ public class gui_mockup extends JFrame {
 		
 		JPanel panel_1 = new JPanel();
 		
-		JButton btnUndo = new JButton("Undo");
-		
 		JButton btnReset = new JButton("Reset");
 		
 		JButton button = new JButton("Up");
@@ -79,23 +77,25 @@ public class gui_mockup extends JFrame {
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-								.addComponent(lblCurrentMoves, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-								.addComponent(btnUndo, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
-								.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, 204, Short.MAX_VALUE)
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addComponent(btnLeft)
-									.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-									.addComponent(btnRight))
+									.addGap(18)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+										.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+										.addComponent(lblCurrentMoves, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+										.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+											.addComponent(btnLeft, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(btnRight))
+										.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
 								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(29)
-									.addComponent(btnDown))))
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(56)
-							.addComponent(button, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap())
+									.addGap(64)
+									.addComponent(button, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
+							.addContainerGap())
+						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnDown)
+							.addGap(55))))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -105,11 +105,9 @@ public class gui_mockup extends JFrame {
 					.addComponent(lblCurrentMoves, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnUndo)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(35)
 					.addComponent(btnReset)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(37)
 					.addComponent(button)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
