@@ -16,7 +16,7 @@ import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class gui_mockup extends JFrame {
+public class PuzzleBoundary extends JFrame {
 
 	private JPanel contentPane;
 
@@ -27,7 +27,7 @@ public class gui_mockup extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					gui_mockup frame = new gui_mockup();
+					PuzzleBoundary frame = new PuzzleBoundary();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,7 +39,7 @@ public class gui_mockup extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public gui_mockup() {
+	public PuzzleBoundary() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 527, 604);
 		contentPane = new JPanel();

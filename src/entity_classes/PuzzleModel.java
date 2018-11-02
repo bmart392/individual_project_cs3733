@@ -10,5 +10,9 @@ public class PuzzleModel {
 		this.originalpuzzle = originalpuzzle;
 	}
 	
+	public void reset() {
+		this.currentpuzzle = this.originalpuzzle;
+	}
+	
 
 }
