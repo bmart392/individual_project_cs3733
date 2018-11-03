@@ -14,5 +14,9 @@ public class PuzzleModel {
 		this.currentpuzzle = this.originalpuzzle;
 	}
 	
+	public void getcurrenttilelocation() {
+		
+	}
+	
 
 }
