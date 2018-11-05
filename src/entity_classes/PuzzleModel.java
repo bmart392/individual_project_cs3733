@@ -43,4 +43,8 @@ public class PuzzleModel {
 	public void increasemovecount() {
 		this.nummoves++;
 	}
+	
+	public void selecttile(int newtile){
+		this.currentpuzzle.setselectedtile(newtile);
+	}
 }

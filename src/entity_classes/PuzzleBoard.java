@@ -30,6 +30,10 @@ public class PuzzleBoard {
 		return this.selectedtile;
 	}
 	
+	public void setselectedtile(int newtile) {
+		this.selectedtile = tiles.get(newtile);		
+	}
+	
 	public LinkedList<Integer> gettilelocation() {
 		LinkedList<Integer> tilelocations = new LinkedList<Integer>();
 		
