@@ -40,14 +40,33 @@ public class PuzzleBoard {
 		return tilelocations;
 	}
 	
-	public boolean ismoveillegal(LinkedList<Integer> cords) {
+	public boolean iswinningmove(LinkedList<Integer> cords) {
 		for (int i = 0; i < cords.size(); i++) {
-			if (cords.get(i) < 0 || (cords.get(i) > 19 && cords.get(i) != 21 && cords.get(i) != 22) || (this.tiles.get(cords.get(i)) != null)) {
+			if (!(cords.get(i) == 17 || cords.get(i) == 18 || cords.get(i) == 21 || cords.get(i) == 22)) {
 				return false;
 			}			
 		}
 		return true;
 
+	}
+	
+	public boolean ismoveillegal(LinkedList<Integer> cords) {
+		for (int i = 0; i < cords.size(); i++) {
+			if (cords.get(i) < 0 || cords.get(i) > 19 || (this.tiles.get(cords.get(i)) != null)) {
+				return false;
+			}			
+		}
+		return true;
+
+	}
+	
+	public void setselectedtilelocation(LinkedList<Integer> newcords, LinkedList<Integer> oldcords) {
+		for (int i = 0; i < newcords.size(); i++) {
+			tiles.set(newcords.get(i), selectedtile);						
+		}
+		for (int i = 0; i < oldcords.size(); i++) {
+			tiles.remove(oldcords.get(i));						
+		}
 	}
 
 }

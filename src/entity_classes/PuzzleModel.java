@@ -32,5 +32,15 @@ public class PuzzleModel {
 		return this.currentpuzzle.ismoveillegal(possiblenewcords);
 	}
 	
-
+	public boolean iswinningmove(LinkedList<Integer> possiblenewcords) {
+		return this.currentpuzzle.iswinningmove(possiblenewcords);
+	}
+	
+	public void setselectedtilelocation(LinkedList<Integer> newcords, LinkedList<Integer> oldcords) {
+		this.currentpuzzle.setselectedtilelocation(newcords, oldcords);
+	}
+	
+	public void increasemovecount() {
+		this.nummoves++;
+	}
 }
