@@ -1,21 +1,35 @@
 package entity_classes;
 
+import java.util.LinkedList;
+
 public class PuzzleModel {
 	
 	PuzzleBoard currentpuzzle;
 	PuzzleBoard originalpuzzle;
+	int nummoves;
 	
 	PuzzleModel(PuzzleBoard currentpuzzle, PuzzleBoard originalpuzzle){
 		this.currentpuzzle = currentpuzzle;
 		this.originalpuzzle = originalpuzzle;
+		this.nummoves = 0;
 	}
 	
 	public void reset() {
 		this.currentpuzzle = this.originalpuzzle;
+		this.nummoves = 0;
 	}
 	
-	public void getcurrenttilelocation() {
+	public boolean isatileselected() {
+		return this.currentpuzzle.getselectedtile() != null;
+	}
+	
+	public LinkedList<Integer> getcurrenttilelocation() {
+		return this.currentpuzzle.gettilelocation();
 		
+	}
+	
+	public boolean ismoveillegal(LinkedList<Integer> possiblenewcords) {
+		return this.currentpuzzle.ismoveillegal(possiblenewcords);
 	}
 	
 
