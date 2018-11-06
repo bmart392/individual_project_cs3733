@@ -26,6 +26,14 @@ public class PuzzleBoard {
 		this.selectedtile = null;
 	}
 	
+	public int getlengthtiles() {
+		return this.tiles.size();
+	}
+	
+	public BackgroundTile gettile(int index) {
+		return this.tiles.get(index);
+	}
+	
 	public BackgroundTile getselectedtile() {
 		return this.selectedtile;
 	}

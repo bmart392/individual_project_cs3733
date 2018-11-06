@@ -14,5 +14,9 @@ public class BackgroundTile {
 		this.iswinningtile = iswinningtile;
 	}
 	
+	public boolean gettilestatus() {
+		return this.iswinningtile;
+	}
+	
 
 }

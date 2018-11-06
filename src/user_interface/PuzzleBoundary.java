@@ -25,7 +25,15 @@ public class PuzzleBoundary extends JFrame {
 	PuzzleModel model;
 	PuzzleDrawingPanel drawingpanel;
 	
-
+	JButton btnReset;
+	JButton btnUp;
+	JButton btnLeft;
+	JButton btnRight;
+	JButton btnDown;
+	
+	JLabel lblCurrentMoves;
+	JLabel label;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -42,7 +50,7 @@ public class PuzzleBoundary extends JFrame {
 		});
 	}
 
-	/**
+		/**
 	 * Create the frame.
 	 */
 	public PuzzleBoundary(PuzzleModel model) {
@@ -57,50 +65,50 @@ public class PuzzleBoundary extends JFrame {
 		
 		this.drawingpanel = new PuzzleDrawingPanel(model.getcurrentlayout());
 		
-		JLabel lblCurrentMoves = new JLabel("Current Moves");
-		lblCurrentMoves.setHorizontalAlignment(SwingConstants.CENTER);
+		this.lblCurrentMoves = new JLabel("Current Moves");
+		this.lblCurrentMoves.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JButton btnReset = new JButton("Reset");
-		btnReset.addActionListener(new ActionListener() {
+		this.btnReset = new JButton("Reset");
+		this.btnReset.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new ResetPuzzle(model, PuzzleBoundary.this).reset();
 			}
 		});
 		
-		JButton button = new JButton("Up");
-		button.addActionListener(new ActionListener() {
+		this.btnUp = new JButton("Up");
+		this.btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new MoveTile(model, PuzzleBoundary.this).move(button);
+				new MoveTile(model, PuzzleBoundary.this).move(btnUp);
 			}
 		});
 		
-		JButton btnLeft = new JButton("Left");
-		btnLeft.addActionListener(new ActionListener() {
+		this.btnLeft = new JButton("Left");
+		this.btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnLeft);
 			}
 		});
 		
-		JButton btnRight = new JButton("Right");
-		btnRight.addActionListener(new ActionListener() {
+		this.btnRight = new JButton("Right");
+		this.btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnRight);
 			}
 		});
 		
-		JButton btnDown = new JButton("Down");
-		btnDown.addActionListener(new ActionListener() {
+		this.btnDown = new JButton("Down");
+		this.btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnDown);
 			}
 		});
 		
-		JLabel label = new JLabel("0");
+		this.label = new JLabel("0");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
+					.addComponent(drawingpanel, GroupLayout.PREFERRED_SIZE, 311, GroupLayout.PREFERRED_SIZE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -118,7 +126,7 @@ public class PuzzleBoundary extends JFrame {
 											.addComponent(label))))
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(64)
-									.addComponent(button, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
+									.addComponent(btnUp, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)))
 							.addContainerGap())
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -127,7 +135,7 @@ public class PuzzleBoundary extends JFrame {
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(panel, GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
+				.addComponent(drawingpanel, GroupLayout.DEFAULT_SIZE, 551, Short.MAX_VALUE)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
@@ -136,7 +144,7 @@ public class PuzzleBoundary extends JFrame {
 					.addGap(90)
 					.addComponent(btnReset)
 					.addGap(37)
-					.addComponent(button)
+					.addComponent(btnUp)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnLeft)
@@ -151,4 +159,8 @@ public class PuzzleBoundary extends JFrame {
 	public PuzzleDrawingPanel getPuzzleDrawingPanel() {
 		return this.drawingpanel;
 	}
+	
+	
+
+
 }
