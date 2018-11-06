@@ -8,7 +8,12 @@ public class PuzzleModel {
 	PuzzleBoard originalpuzzle;
 	int nummoves;
 	
-	PuzzleModel(PuzzleBoard currentpuzzle, PuzzleBoard originalpuzzle){
+	public PuzzleModel(){
+		this.currentpuzzle = null;
+		this.originalpuzzle = null;
+		this.nummoves = 0;
+	}
+	public PuzzleModel(PuzzleBoard currentpuzzle, PuzzleBoard originalpuzzle){
 		this.currentpuzzle = currentpuzzle;
 		this.originalpuzzle = originalpuzzle;
 		this.nummoves = 0;
@@ -46,5 +51,9 @@ public class PuzzleModel {
 	
 	public void selecttile(int newtile){
 		this.currentpuzzle.setselectedtile(newtile);
+	}
+	
+	public PuzzleBoard getcurrentlayout() {
+		return this.currentpuzzle;
 	}
 }

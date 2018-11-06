@@ -8,7 +8,7 @@ public class ResetPuzzle {
 	PuzzleModel model;
 	PuzzleBoundary boundary;
 	
-	ResetPuzzle(PuzzleModel model, PuzzleBoundary boundary){
+	public ResetPuzzle(PuzzleModel model, PuzzleBoundary boundary){
 		this.model = model;
 		this. boundary = boundary;
 	}

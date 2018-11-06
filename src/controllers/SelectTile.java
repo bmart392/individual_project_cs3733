@@ -1,9 +1,13 @@
 package controllers;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import entity_classes.PuzzleModel;
 import user_interface.PuzzleBoundary;
+import user_interface.PuzzleDrawingPanel;
 
-public class SelectTile {
+public class SelectTile extends MouseAdapter{
 	
 	PuzzleModel model;
 	PuzzleBoundary boundary;
@@ -12,12 +16,18 @@ public class SelectTile {
 		this.model = model;
 		this. boundary = boundary;
 	}
-
-	public void select() {
-		
-		int thistile = 0;
+	
+	@Override
+	public void mouseClicked(MouseEvent e) {
+				
+		int thistile = this.convertpixelstoindex(e.getX(),e.getY());
 		
 		this.model.selecttile(thistile);
+	}
+	
+	public int convertpixelstoindex(int x, int y) {
+		PuzzleDrawingPanel view = boundary.getPuzzleDrawingPanel();
+		return 0;
 	}
 
 }

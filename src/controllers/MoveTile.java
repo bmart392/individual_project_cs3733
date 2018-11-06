@@ -2,6 +2,8 @@ package controllers;
 
 import java.util.LinkedList;
 
+import javax.swing.JButton;
+
 import entity_classes.PuzzleModel;
 import user_interface.PuzzleBoundary;
 
@@ -16,23 +18,24 @@ public class MoveTile {
 	PuzzleModel model;
 	PuzzleBoundary boundary;
 	
-	MoveTile(PuzzleModel model, PuzzleBoundary boundary){
+	public MoveTile(PuzzleModel model, PuzzleBoundary boundary){
 		this.model = model;
 		this. boundary = boundary;
 	}
 	
-	public void move(String thebuttonpressed) {
-		
-		
+	public void move(JButton buttonpressed) {
+			
 			// check if there is currently a tile selected
-			if (!this.model.isatileselected()) {
-				return;
-			}
+			if (!this.model.isatileselected()) { return; }
+			
+			// Get the direction the tile needs to move
+			Direction indicateddirection = Direction.valueOf(buttonpressed.getText());
+		
 			// get current position of tile
 			LinkedList<Integer> currenttileposition = this.model.getcurrenttilelocation();
 			
 			// generate new position of tile based on old one and direction
-			LinkedList<Integer> newcords = this.calcnewtilelocation(Direction.DOWN, currenttileposition);
+			LinkedList<Integer> newcords = this.calcnewtilelocation(indicateddirection, currenttileposition);
 			
 
 			// Check to see if this move wins
@@ -42,9 +45,7 @@ public class MoveTile {
 			}
 			
 			// check if new position is valid (i.e. goes off the board or tries to be in the location of another tile)
-			if(this.model.ismoveillegal(newcords)) {
-				return;
-			}
+			if(this.model.ismoveillegal(newcords)) { return; }
 			
 			// set the new location of the tile to be the new position
 			this.model.setselectedtilelocation(newcords, currenttileposition);
