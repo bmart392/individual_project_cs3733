@@ -1,12 +1,12 @@
-package user_interface;
+package puzzle.user_interface;
 
 import java.awt.Color;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-import entity_classes.BackgroundTile;
-import entity_classes.PuzzleBoard;
+import puzzle.entity_classes.BackgroundTile;
+import puzzle.entity_classes.PuzzleBoard;
 
 public class PuzzleDrawingPanel extends JPanel{
 	
@@ -36,7 +36,7 @@ public class PuzzleDrawingPanel extends JPanel{
 				g.setColor(Color.gray);
 			}
 			
-			g.fillRect(buffer + ((index % 4) * tilewidth),buffer + ((index % 5) * tileheight),tilewidth - (2 * buffer),tileheight - (2 * buffer));
+			g.fillRect(buffer + ((index % 4) * tilewidth),buffer + ((index % 5) * tileheight), currentTile.getsizex() * (tilewidth - (2 * buffer)), currentTile.getsizey() *(tileheight - (2 * buffer)));
 		}
 	}
 

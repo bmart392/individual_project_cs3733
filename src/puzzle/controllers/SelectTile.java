@@ -1,11 +1,11 @@
-package controllers;
+package puzzle.controllers;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import entity_classes.PuzzleModel;
-import user_interface.PuzzleBoundary;
-import user_interface.PuzzleDrawingPanel;
+import puzzle.entity_classes.PuzzleModel;
+import puzzle.user_interface.PuzzleBoundary;
+import puzzle.user_interface.PuzzleDrawingPanel;
 
 public class SelectTile extends MouseAdapter{
 	

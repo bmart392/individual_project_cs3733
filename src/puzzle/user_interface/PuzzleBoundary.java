@@ -1,4 +1,4 @@
-package user_interface;
+package puzzle.user_interface;
 
 import java.awt.EventQueue;
 
@@ -6,9 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import controllers.MoveTile;
-import controllers.ResetPuzzle;
-import entity_classes.PuzzleModel;
+import puzzle.controllers.MoveTile;
+import puzzle.controllers.ResetPuzzle;
+import puzzle.entity_classes.PuzzleModel;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;

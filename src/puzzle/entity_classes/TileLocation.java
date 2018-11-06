@@ -1,4 +1,4 @@
-package entity_classes;
+package puzzle.entity_classes;
 
 public class TileLocation {
 

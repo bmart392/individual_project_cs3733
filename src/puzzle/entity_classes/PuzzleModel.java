@@ -1,4 +1,4 @@
-package entity_classes;
+package puzzle.entity_classes;
 
 import java.util.LinkedList;
 
@@ -9,13 +9,13 @@ public class PuzzleModel {
 	int nummoves;
 	
 	public PuzzleModel(){
-		this.currentpuzzle = null;
-		this.originalpuzzle = null;
+		this.currentpuzzle = new PuzzleBoard();
+		this.originalpuzzle = this.currentpuzzle;
 		this.nummoves = 0;
 	}
-	public PuzzleModel(PuzzleBoard currentpuzzle, PuzzleBoard originalpuzzle){
+	public PuzzleModel(PuzzleBoard currentpuzzle){
 		this.currentpuzzle = currentpuzzle;
-		this.originalpuzzle = originalpuzzle;
+		this.originalpuzzle = this.currentpuzzle;
 		this.nummoves = 0;
 	}
 	

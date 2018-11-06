@@ -1,11 +1,11 @@
-package controllers;
+package puzzle.controllers;
 
 import java.util.LinkedList;
 
 import javax.swing.JButton;
 
-import entity_classes.PuzzleModel;
-import user_interface.PuzzleBoundary;
+import puzzle.entity_classes.PuzzleModel;
+import puzzle.user_interface.PuzzleBoundary;
 
 enum Direction{
 	
