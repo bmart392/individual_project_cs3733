@@ -3,6 +3,8 @@ package puzzle.controllers;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JPanel;
+
 import puzzle.entity_classes.PuzzleModel;
 import puzzle.user_interface.PuzzleBoundary;
 import puzzle.user_interface.PuzzleDrawingPanel;

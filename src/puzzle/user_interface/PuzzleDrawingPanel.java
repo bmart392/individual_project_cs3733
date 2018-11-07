@@ -2,6 +2,7 @@ package puzzle.user_interface;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.LinkedList;
 
 import javax.swing.JPanel;
 
@@ -17,8 +18,6 @@ public class PuzzleDrawingPanel extends JPanel{
 	
 	public PuzzleDrawingPanel(PuzzleBoard layout){
 		this.buffer = 10;
-		this.tileheight = (this.getHeight() - (6*this.buffer))/5;
-		this.tilewidth = (this.getWidth() - (5*this.buffer))/4;
 		this.layout = layout;
 	}
 	
@@ -26,8 +25,28 @@ public class PuzzleDrawingPanel extends JPanel{
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
+		int raw_height = (this.getHeight() - (6*this.buffer)) % 5;
+		if (raw_height!= 0) {
+			this.tileheight = ((this.getHeight() - (6*this.buffer)) - raw_height)/5;
+		} else {
+			this.tileheight = (this.getHeight() - (6*this.buffer));
+		}
+		
+		int raw_width = (this.getWidth() - (6*this.buffer)) % 5;
+		if (raw_width!= 0) {
+			this.tilewidth = ((this.getWidth() - (5*this.buffer)) - raw_width)/5;
+		} else {
+			this.tilewidth = (this.getWidth() - (5*this.buffer))/4;
+		}
+		
+		LinkedList<BackgroundTile> drawntiles = new LinkedList<BackgroundTile>();
+		
 		for (int index = 0; index < layout.getlengthtiles(); index++) {
 			BackgroundTile currentTile = layout.gettile(index);
+			if (currentTile == null || drawntiles.contains(currentTile)) {
+				continue;
+			}
+						
 			if (currentTile.gettilestatus()) {
 				g.setColor(Color.red);
 			} else if (currentTile == layout.getselectedtile()) {
@@ -37,6 +56,8 @@ public class PuzzleDrawingPanel extends JPanel{
 			}
 			
 			g.fillRect(buffer + ((index % 4) * tilewidth),buffer + ((index % 5) * tileheight), currentTile.getsizex() * (tilewidth - (2 * buffer)), currentTile.getsizey() *(tileheight - (2 * buffer)));
+			
+			drawntiles.add(currentTile);
 		}
 	}
 
