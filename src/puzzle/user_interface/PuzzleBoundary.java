@@ -162,6 +162,10 @@ public class PuzzleBoundary extends JFrame {
 		return this.drawingpanel;
 	}
 	
+	public void setcurrentmoves() {
+		this.label.setText(String.valueOf(this.model.getnummoves()));
+	}
+	
 	
 
 

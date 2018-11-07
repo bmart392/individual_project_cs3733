@@ -57,6 +57,7 @@ public class MoveTile {
 			this.model.increasemovecount();
 			
 			// refresh the screen
+			this.boundary.setcurrentmoves();
 			this.boundary.repaint();
 			
 		}

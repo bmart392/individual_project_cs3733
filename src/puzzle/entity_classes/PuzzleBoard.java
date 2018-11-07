@@ -127,11 +127,11 @@ public class PuzzleBoard {
 	}
 	
 	public void setselectedtilelocation(LinkedList<Integer> newcords, LinkedList<Integer> oldcords) {
-		for (int i = 0; i < newcords.size(); i++) {
-			tiles.set(newcords.get(i), selectedtile);						
-		}
 		for (int i = 0; i < oldcords.size(); i++) {
 			tiles.set(oldcords.get(i), null);						
+		}
+		for (int i = 0; i < newcords.size(); i++) {
+			tiles.set(newcords.get(i), selectedtile);						
 		}
 	}
 

@@ -24,6 +24,10 @@ public class PuzzleModel {
 		this.nummoves = 0;
 	}
 	
+	public int getnummoves() {
+		return nummoves;
+	}
+	
 	public boolean isatileselected() {
 		return this.currentpuzzle.getselectedtile() != null;
 	}
