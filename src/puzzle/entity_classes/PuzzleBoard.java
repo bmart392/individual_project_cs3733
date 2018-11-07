@@ -131,7 +131,7 @@ public class PuzzleBoard {
 			tiles.set(newcords.get(i), selectedtile);						
 		}
 		for (int i = 0; i < oldcords.size(); i++) {
-			tiles.remove(oldcords.get(i));						
+			tiles.set(oldcords.get(i), null);						
 		}
 	}
 
