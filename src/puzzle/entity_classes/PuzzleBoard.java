@@ -104,6 +104,9 @@ public class PuzzleBoard {
 	}
 	
 	public boolean iswinningmove(LinkedList<Integer> cords) {
+		if (!this.selectedtile.gettilestatus()) {
+			return false;
+		}
 		for (int i = 0; i < cords.size(); i++) {
 			if (!(cords.get(i) == 17 || cords.get(i) == 18 || cords.get(i) == 21 || cords.get(i) == 22)) {
 				return false;
@@ -115,11 +118,11 @@ public class PuzzleBoard {
 	
 	public boolean ismoveillegal(LinkedList<Integer> cords) {
 		for (int i = 0; i < cords.size(); i++) {
-			if (cords.get(i) < 0 || cords.get(i) > 19 || (this.tiles.get(cords.get(i)) != null)) {
-				return false;
+			if (cords.get(i) < 0 || cords.get(i) > 19 || (this.tiles.get(cords.get(i)) != null && this.tiles.get(cords.get(i)) != this.selectedtile)) {
+				return true;
 			}			
 		}
-		return true;
+		return false;
 
 	}
 	

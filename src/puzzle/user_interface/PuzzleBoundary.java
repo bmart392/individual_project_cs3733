@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import puzzle.controllers.MoveTile;
 import puzzle.controllers.ResetPuzzle;
+import puzzle.controllers.SelectTile;
 import puzzle.entity_classes.PuzzleModel;
 
 import javax.swing.GroupLayout;
@@ -64,6 +65,7 @@ public class PuzzleBoundary extends JFrame {
 		setContentPane(contentPane);
 		
 		this.drawingpanel = new PuzzleDrawingPanel(model.getcurrentlayout());
+		this.drawingpanel.addMouseListener(new SelectTile(this.model, PuzzleBoundary.this));
 		
 		this.lblCurrentMoves = new JLabel("Current Moves");
 		this.lblCurrentMoves.setHorizontalAlignment(SwingConstants.CENTER);
@@ -75,28 +77,28 @@ public class PuzzleBoundary extends JFrame {
 			}
 		});
 		
-		this.btnUp = new JButton("Up");
+		this.btnUp = new JButton("UP");
 		this.btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnUp);
 			}
 		});
 		
-		this.btnLeft = new JButton("Left");
+		this.btnLeft = new JButton("LEFT");
 		this.btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnLeft);
 			}
 		});
 		
-		this.btnRight = new JButton("Right");
+		this.btnRight = new JButton("RIGHT");
 		this.btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnRight);
 			}
 		});
 		
-		this.btnDown = new JButton("Down");
+		this.btnDown = new JButton("DOWN");
 		this.btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				new MoveTile(model, PuzzleBoundary.this).move(btnDown);

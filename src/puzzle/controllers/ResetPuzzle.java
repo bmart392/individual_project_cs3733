@@ -15,6 +15,7 @@ public class ResetPuzzle {
 
 	public void reset() {
 		this.model.reset();
+		this.boundary.repaint();
 	}
 
 }

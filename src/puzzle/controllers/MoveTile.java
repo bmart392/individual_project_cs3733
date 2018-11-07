@@ -28,8 +28,11 @@ public class MoveTile {
 			// check if there is currently a tile selected
 			if (!this.model.isatileselected()) { return; }
 			
+			String directionText = buttonpressed.getText();
+			
+			
 			// Get the direction the tile needs to move
-			Direction indicateddirection = Direction.valueOf(buttonpressed.getText());
+			Direction indicateddirection = Direction.valueOf(directionText);
 		
 			// get current position of tile
 			LinkedList<Integer> currenttileposition = this.model.getcurrenttilelocation();
@@ -54,6 +57,7 @@ public class MoveTile {
 			this.model.increasemovecount();
 			
 			// refresh the screen
+			this.boundary.repaint();
 			
 		}
 	

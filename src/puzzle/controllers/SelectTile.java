@@ -14,7 +14,7 @@ public class SelectTile extends MouseAdapter{
 	PuzzleModel model;
 	PuzzleBoundary boundary;
 	
-	SelectTile(PuzzleModel model, PuzzleBoundary boundary){
+	public SelectTile(PuzzleModel model, PuzzleBoundary boundary){
 		this.model = model;
 		this. boundary = boundary;
 	}
@@ -25,6 +25,8 @@ public class SelectTile extends MouseAdapter{
 		int thistile = this.convertpixelstoindex(e.getX(),e.getY());
 		
 		this.model.selecttile(thistile);
+		
+		this.boundary.repaint();
 	}
 	
 	public int convertpixelstoindex(int x, int y) {
