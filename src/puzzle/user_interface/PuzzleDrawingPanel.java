@@ -43,11 +43,9 @@ public class PuzzleDrawingPanel extends JPanel{
 		
 		for (int index = 0; index < layout.getlengthtiles(); index++) {
 			BackgroundTile currentTile = layout.gettile(index);
-			if (currentTile == null || drawntiles.contains(currentTile)) {
-				continue;
-			}
+			if (currentTile == null || drawntiles.contains(currentTile)) { continue; }
 						
-			if (currentTile.gettilestatus()) {
+			if (currentTile.gettilestatus()) { 
 				g.setColor(Color.red);
 			} else if (currentTile == layout.getselectedtile()) {
 				g.setColor(Color.blue);
@@ -55,7 +53,13 @@ public class PuzzleDrawingPanel extends JPanel{
 				g.setColor(Color.gray);
 			}
 			
-			g.fillRect(buffer + ((index % 4) * tilewidth),buffer + ((index % 5) * tileheight), currentTile.getsizex() * (tilewidth - (2 * buffer)), currentTile.getsizey() *(tileheight - (2 * buffer)));
+			int col = index % 4;
+			int xpos = buffer * (col + 1) + (col * tilewidth);
+			
+			int row = (index - col) % 5;
+			int ypos = buffer * (row + 1) + row * tileheight;
+			
+			g.fillRect(xpos, ypos , currentTile.getsizex() * tilewidth, currentTile.getsizey() * tileheight);
 			
 			drawntiles.add(currentTile);
 		}
