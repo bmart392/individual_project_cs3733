@@ -29,7 +29,12 @@ public class SelectTile extends MouseAdapter{
 	
 	public int convertpixelstoindex(int x, int y) {
 		PuzzleDrawingPanel view = boundary.getPuzzleDrawingPanel();
-		return 0;
+		
+		int col = (x - view.getbuffer()) / (view.getbuffer() + view.gettilewidth());
+		
+		int row = (y - view.getbuffer()) / (view.getbuffer() + view.gettileheight());
+		
+		return 4 * row + col;
 	}
 
 }

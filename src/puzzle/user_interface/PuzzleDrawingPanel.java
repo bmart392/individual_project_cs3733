@@ -21,6 +21,18 @@ public class PuzzleDrawingPanel extends JPanel{
 		this.layout = layout;
 	}
 	
+	public int getbuffer() {
+		return this.buffer;
+	}
+	
+	public int gettileheight() {
+		return this.tileheight;
+	}
+	
+	public int gettilewidth() {
+		return this.tilewidth;
+	}
+	
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -56,10 +68,13 @@ public class PuzzleDrawingPanel extends JPanel{
 			int col = index % 4;
 			int xpos = buffer * (col + 1) + (col * tilewidth);
 			
-			int row = (index - col) % 5;
+			int row = (index - col) / 4;
 			int ypos = buffer * (row + 1) + row * tileheight;
 			
-			g.fillRect(xpos, ypos , currentTile.getsizex() * tilewidth, currentTile.getsizey() * tileheight);
+			int width = currentTile.getsizex() * tilewidth + (currentTile.getsizex() - 1) * buffer;
+			int height = currentTile.getsizey() * tileheight + (currentTile.getsizey() - 1) * buffer;
+			
+			g.fillRect(xpos, ypos , width , height);
 			
 			drawntiles.add(currentTile);
 		}
