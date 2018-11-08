@@ -129,47 +129,8 @@ public class PuzzleBoard {
 	}
 	
 	public void resettiles() {
-		BackgroundTile piece1 = new BackgroundTile("1", 1, 2, false);
-		BackgroundTile piece2 = new BackgroundTile("2", 2, 2, true);
-		BackgroundTile piece3 = new BackgroundTile("3", 1, 2, false);
-		BackgroundTile piece4 = new BackgroundTile("4", 1, 2, false);
-		BackgroundTile piece5 = new BackgroundTile("5", 1, 1, false);
-		BackgroundTile piece6 = new BackgroundTile("6", 1, 1, false);
-		BackgroundTile piece7 = new BackgroundTile("7", 1, 2, false);
-		BackgroundTile piece8 = new BackgroundTile("8", 1, 1, false);
-		BackgroundTile piece9 = new BackgroundTile("9", 1, 1, false);
-		BackgroundTile piece10 = new BackgroundTile("10", 2, 1, false);
 		
-		this.tiles = new LinkedList<BackgroundTile>();
-		this.tiles.add(piece1);
-		this.tiles.add(piece5);
-		this.tiles.add(piece6);
-		this.tiles.add(piece3);
-		
-		this.tiles.add(piece1);
-		this.tiles.add(piece8);
-		this.tiles.add(piece9);
-		this.tiles.add(piece3);
-		
-		this.tiles.add(piece4);
-		this.tiles.add(piece10);
-		this.tiles.add(piece10);
-		this.tiles.add(piece7);
-		
-		this.tiles.add(piece4);
-		this.tiles.add(piece2);
-		this.tiles.add(piece2);
-		this.tiles.add(piece7);
-		
-		this.tiles.add(null);
-		this.tiles.add(piece2);
-		this.tiles.add(piece2);
-		this.tiles.add(null);
-		
-		this.tiles.add(null);
-		this.tiles.add(null);
-		this.tiles.add(null);
-		this.tiles.add(null);
+		this.tiles = new PuzzleBoard(0).gettiles();
 		
 		this.selectedtile = null;
 	}
