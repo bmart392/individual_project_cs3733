@@ -11,7 +11,7 @@ public class TestPuzzleBoard extends TestCase {
 		
 		board.resettiles();
 		
-		assertTrue (board.gettile(1).isThisTileWinner() == true);	
+		assertTrue (board.gettile(1).isThisTileWinner());	
 	}
 	
 	public void testLengthTiles() {
@@ -69,13 +69,13 @@ public class TestPuzzleBoard extends TestCase {
 		
 		board1.setselectedtilelocation(newcord, board1.gettilelocation());
 		
-		assertTrue (board1.iswinningmove(board1.gettilelocation()) == true);
+		assertTrue (board1.iswinningmove(board1.gettilelocation()));
 	}
 	
 	public void testIsMoveIllegal() {
 		PuzzleBoard board1 = new PuzzleBoard();
-		
-		board1.setselectedtile(0);
+
+		board1.setselectedtile(17);
 		
 		LinkedList<Integer> newcord1 = new LinkedList<Integer>();
 		newcord1.add(-1);
@@ -84,16 +84,14 @@ public class TestPuzzleBoard extends TestCase {
 		LinkedList<Integer> newcord2 = new LinkedList<Integer>();
 		newcord2.add(1);
 		newcord2.add(5);
-		
-		board1.setselectedtile(17);
-		
+				
 		LinkedList<Integer> newcord3 = new LinkedList<Integer>();
 		newcord2.add(18);
 		newcord2.add(19);
 		
-		assertTrue (board1.ismoveillegal(newcord1) == true);
-		assertTrue (board1.ismoveillegal(newcord2) == true);
-		assertTrue (board1.ismoveillegal(newcord3) == false);
+		assertTrue (board1.ismoveillegal(newcord1));
+		assertTrue (board1.ismoveillegal(newcord2));
+		assertFalse (board1.ismoveillegal(newcord3));
 	}
 	
 	public void testSetSelectedLocation() {
@@ -115,11 +113,11 @@ public class TestPuzzleBoard extends TestCase {
 		
 		board1.setselectedtile(16);		
 		
-		assertTrue (board1.isFullWithOther(1) == true); // Test true && true
-		assertTrue (board1.isFullWithOther(19) == false); // Test false && true
-		assertTrue (board1.isFullWithOther(16) == false); // Test false && false
+		assertTrue (board1.isFullWithOther(1)); // Test true && true
+		assertFalse (board1.isFullWithOther(19)); // Test false && true
+		assertFalse (board1.isFullWithOther(16)); // Test false && false
 		
 		board1.setselectedtile(3);
-		assertTrue (board1.isFullWithOther(3) == false); // Test true && false	
+		assertFalse (board1.isFullWithOther(3)); // Test true && false	
 	}
 }

@@ -180,16 +180,13 @@ public class PuzzleBoard {
 			int newcord = newcords.get(i);
 			
 			boolean isTileAboveBoardCase = newcord < 0;
-			System.out.println(isTileAboveBoardCase);
 			boolean isTileBelowBoardCase = newcord > 19;
-			System.out.println(isTileBelowBoardCase);
 			
 			if (isTileAboveBoardCase || isTileBelowBoardCase) {
 				return true;
 			}
 			
 			boolean isCellFullCase = isFullWithOther(newcord);
-			System.out.println(isCellFullCase);
 			
 			if (isCellFullCase) {
 				return true;

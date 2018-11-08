@@ -7,7 +7,7 @@ public class TestBackgroundTile extends TestCase{
 	public void testTileWinner() {
 		BackgroundTile tile = new BackgroundTile(2,2,true);
 		
-		assertTrue (tile.isThisTileWinner() == true);
+		assertTrue (tile.isThisTileWinner());
 	}
 	
 	public void testGetX() {

@@ -46,9 +46,9 @@ public class PuzzleModel {
 	}
 	
 	//  Returns the current coordinates of the selected tile as a LinkedList of integers
-	public LinkedList<Integer> getcurrenttilelocation() { 
+	public LinkedList<Integer> getcurrenttilelocation() {
 		return this.currentpuzzle.gettilelocation(); 
-		}
+	}
 	
 	// Checks to see if a move is legal and returns true if the move is not legal
 	public boolean ismoveillegal(LinkedList<Integer> possiblenewcords) {
