@@ -181,4 +181,8 @@ public class PuzzleBoundary extends JFrame {
 	public void setboundarymodel(PuzzleModel model) {
 		this.model = model;
 	}
+	
+	public String getlabelwintext() {
+		return this.label_win.getText();
+	}
 }

@@ -31,6 +31,11 @@ public class PuzzleModel {
 		this.nummoves++;
 	}
 	
+	// Sets the currentpuzzle to one given
+	public void setcurrentpuzzle(PuzzleBoard newpuzzle) {
+		this.currentpuzzle = newpuzzle;
+	}
+	
 	//==================== DATA MANIPULATION ====================
 	
 	// Resets the current puzzle configuration to the starting configuration

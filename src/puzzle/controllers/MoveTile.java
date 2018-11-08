@@ -23,10 +23,10 @@ public class MoveTile {
 		this. boundary = boundary;
 	}
 	
-	public void move(JButton buttonpressed) {
+	public boolean move(JButton buttonpressed) {
 			
 			// check if there is currently a tile selected
-			if (!this.model.isatileselected()) { return; }			
+			if (!this.model.isatileselected()) { return false; }			
 			
 			// Get the direction the tile needs to move
 			Direction indicateddirection = Direction.valueOf(buttonpressed.getText());
@@ -46,7 +46,7 @@ public class MoveTile {
 			} else {
 				
 				// check if new position is valid (i.e. goes off the board or tries to be in the location of another tile)
-				if(this.model.ismoveillegal(newcords)) { return; }
+				if(this.model.ismoveillegal(newcords)) { return false; }
 			}
 			
 			// set the new location of the tile to be the new position
@@ -58,6 +58,8 @@ public class MoveTile {
 			// refresh the screen
 			this.boundary.setcurrentmoves();
 			this.boundary.repaint();
+			
+			return true;
 			
 		}
 	

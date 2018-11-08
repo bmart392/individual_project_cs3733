@@ -78,7 +78,7 @@ public class PuzzleBoard {
 	}
 	
 	// Creates a board that is one move away from winning.
-	PuzzleBoard(int nothing){
+	public PuzzleBoard(int nothing){
 		BackgroundTile piece1 = new BackgroundTile(1, 2, false);
 		BackgroundTile piece2 = new BackgroundTile(2, 2, true);
 		BackgroundTile piece3 = new BackgroundTile(1, 2, false);
