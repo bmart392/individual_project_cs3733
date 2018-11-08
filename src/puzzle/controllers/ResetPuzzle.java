@@ -10,12 +10,14 @@ public class ResetPuzzle {
 	
 	public ResetPuzzle(PuzzleModel model, PuzzleBoundary boundary){
 		this.model = model;
-		this. boundary = boundary;
+		this.boundary = boundary;
 	}
 
 	public void reset() {
-		this.model.reset();
+		this.model.resetpuzzle();
 		this.boundary.setcurrentmoves();
+		this.boundary.setwinlabel(" ");
+		
 		this.boundary.repaint();
 	}
 

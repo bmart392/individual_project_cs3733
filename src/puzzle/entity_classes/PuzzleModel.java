@@ -9,18 +9,21 @@ public class PuzzleModel {
 	int nummoves;
 	
 	public PuzzleModel(){
-		this.currentpuzzle = new PuzzleBoard();
-		this.originalpuzzle = this.currentpuzzle;
+		this.currentpuzzle = new PuzzleBoard(0);
+		this.originalpuzzle = new PuzzleBoard(0);
 		this.nummoves = 0;
 	}
-	public PuzzleModel(PuzzleBoard currentpuzzle){
+	/*public PuzzleModel(PuzzleBoard currentpuzzle){
 		this.currentpuzzle = currentpuzzle;
 		this.originalpuzzle = this.currentpuzzle;
 		this.nummoves = 0;
-	}
+	}*/
 	
-	public void reset() {
-		this.currentpuzzle = this.originalpuzzle;
+	public void resetpuzzle() {
+		//this.currentpuzzle = new PuzzleBoard(0);
+		//this.currentpuzzle.settiles(this.originalpuzzle.gettiles()); ;
+		//this.currentpuzzle = new PuzzleBoard(0);//this.originalpuzzle;
+		this.currentpuzzle.resettiles();
 		this.nummoves = 0;
 	}
 	
@@ -37,8 +40,8 @@ public class PuzzleModel {
 		
 	}
 	
-	public boolean ismoveillegal(LinkedList<Integer> possiblenewcords) {
-		return this.currentpuzzle.ismoveillegal(possiblenewcords);
+	public boolean ismoveillegal(LinkedList<Integer> possiblenewcords, LinkedList<Integer> oldcords ) {
+		return this.currentpuzzle.ismoveillegal(possiblenewcords, oldcords);
 	}
 	
 	public boolean iswinningmove(LinkedList<Integer> possiblenewcords) {

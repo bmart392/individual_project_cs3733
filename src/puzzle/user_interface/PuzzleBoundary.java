@@ -34,11 +34,12 @@ public class PuzzleBoundary extends JFrame {
 	
 	JLabel lblCurrentMoves;
 	JLabel label;
+	JLabel label_win;
 	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -49,7 +50,7 @@ public class PuzzleBoundary extends JFrame {
 				}
 			}
 		});
-	}
+	}*/
 
 		/**
 	 * Create the frame.
@@ -106,6 +107,9 @@ public class PuzzleBoundary extends JFrame {
 		});
 		
 		this.label = new JLabel("0");
+		
+		this.label_win = new JLabel(" ");
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -116,14 +120,16 @@ public class PuzzleBoundary extends JFrame {
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addGap(18)
-									.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 										.addGroup(gl_contentPane.createSequentialGroup()
 											.addComponent(btnLeft, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-											.addPreferredGap(ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+											.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 											.addComponent(btnRight))
-										.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-										.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
-											.addComponent(lblCurrentMoves)
+										.addComponent(btnReset, GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+										.addGroup(gl_contentPane.createSequentialGroup()
+											.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+												.addComponent(label_win)
+												.addComponent(lblCurrentMoves))
 											.addPreferredGap(ComponentPlacement.RELATED)
 											.addComponent(label))))
 								.addGroup(gl_contentPane.createSequentialGroup()
@@ -143,7 +149,9 @@ public class PuzzleBoundary extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCurrentMoves, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
 						.addComponent(label))
-					.addGap(90)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(label_win)
+					.addGap(48)
 					.addComponent(btnReset)
 					.addGap(37)
 					.addComponent(btnUp)
@@ -166,7 +174,11 @@ public class PuzzleBoundary extends JFrame {
 		this.label.setText(String.valueOf(this.model.getnummoves()));
 	}
 	
+	public void setwinlabel(String text) {
+		this.label_win.setText(text);
+	}
 	
-
-
+	public void setboundarymodel(PuzzleModel model) {
+		this.model = model;
+	}
 }

@@ -74,11 +74,116 @@ public class PuzzleBoard {
 		this.tiles.add(piece10);
 		this.tiles.add(null);
 		
+		this.tiles.add(null);
+		this.tiles.add(null);
+		this.tiles.add(null);
+		this.tiles.add(null);
+		
+		this.selectedtile = null;
+	}
+	
+	PuzzleBoard(int nothing){
+		BackgroundTile piece1 = new BackgroundTile("1", 1, 2, false);
+		BackgroundTile piece2 = new BackgroundTile("2", 2, 2, true);
+		BackgroundTile piece3 = new BackgroundTile("3", 1, 2, false);
+		BackgroundTile piece4 = new BackgroundTile("4", 1, 2, false);
+		BackgroundTile piece5 = new BackgroundTile("5", 1, 1, false);
+		BackgroundTile piece6 = new BackgroundTile("6", 1, 1, false);
+		BackgroundTile piece7 = new BackgroundTile("7", 1, 2, false);
+		BackgroundTile piece8 = new BackgroundTile("8", 1, 1, false);
+		BackgroundTile piece9 = new BackgroundTile("9", 1, 1, false);
+		BackgroundTile piece10 = new BackgroundTile("10", 2, 1, false);
+		
+		this.tiles = new LinkedList<BackgroundTile>();
+		this.tiles.add(piece1);
+		this.tiles.add(piece5);
+		this.tiles.add(piece6);
+		this.tiles.add(piece3);
+		
+		this.tiles.add(piece1);
+		this.tiles.add(piece8);
+		this.tiles.add(piece9);
+		this.tiles.add(piece3);
+		
+		this.tiles.add(piece4);
+		this.tiles.add(piece10);
+		this.tiles.add(piece10);
+		this.tiles.add(piece7);
+		
+		this.tiles.add(piece4);
+		this.tiles.add(piece2);
+		this.tiles.add(piece2);
+		this.tiles.add(piece7);
+		
+		this.tiles.add(null);
+		this.tiles.add(piece2);
+		this.tiles.add(piece2);
+		this.tiles.add(null);
+		
+		this.tiles.add(null);
+		this.tiles.add(null);
+		this.tiles.add(null);
+		this.tiles.add(null);
+		
+		this.selectedtile = null;
+	}
+	
+	public void resettiles() {
+		BackgroundTile piece1 = new BackgroundTile("1", 1, 2, false);
+		BackgroundTile piece2 = new BackgroundTile("2", 2, 2, true);
+		BackgroundTile piece3 = new BackgroundTile("3", 1, 2, false);
+		BackgroundTile piece4 = new BackgroundTile("4", 1, 2, false);
+		BackgroundTile piece5 = new BackgroundTile("5", 1, 1, false);
+		BackgroundTile piece6 = new BackgroundTile("6", 1, 1, false);
+		BackgroundTile piece7 = new BackgroundTile("7", 1, 2, false);
+		BackgroundTile piece8 = new BackgroundTile("8", 1, 1, false);
+		BackgroundTile piece9 = new BackgroundTile("9", 1, 1, false);
+		BackgroundTile piece10 = new BackgroundTile("10", 2, 1, false);
+		
+		this.tiles = new LinkedList<BackgroundTile>();
+		this.tiles.add(piece1);
+		this.tiles.add(piece5);
+		this.tiles.add(piece6);
+		this.tiles.add(piece3);
+		
+		this.tiles.add(piece1);
+		this.tiles.add(piece8);
+		this.tiles.add(piece9);
+		this.tiles.add(piece3);
+		
+		this.tiles.add(piece4);
+		this.tiles.add(piece10);
+		this.tiles.add(piece10);
+		this.tiles.add(piece7);
+		
+		this.tiles.add(piece4);
+		this.tiles.add(piece2);
+		this.tiles.add(piece2);
+		this.tiles.add(piece7);
+		
+		this.tiles.add(null);
+		this.tiles.add(piece2);
+		this.tiles.add(piece2);
+		this.tiles.add(null);
+		
+		this.tiles.add(null);
+		this.tiles.add(null);
+		this.tiles.add(null);
+		this.tiles.add(null);
+		
 		this.selectedtile = null;
 	}
 	
 	public int getlengthtiles() {
 		return this.tiles.size();
+	}
+	
+	public void settiles(LinkedList<BackgroundTile> tiles){
+		this.tiles = tiles;;
+	}
+	
+	public LinkedList<BackgroundTile> gettiles(){
+		return this.tiles;
 	}
 	
 	public BackgroundTile gettile(int index) {
@@ -116,11 +221,21 @@ public class PuzzleBoard {
 
 	}
 	
-	public boolean ismoveillegal(LinkedList<Integer> cords) {
-		for (int i = 0; i < cords.size(); i++) {
-			if (cords.get(i) < 0 || cords.get(i) > 19 || (this.tiles.get(cords.get(i)) != null && this.tiles.get(cords.get(i)) != this.selectedtile)) {
-				return true;
-			}			
+	public boolean ismoveillegal(LinkedList<Integer> newcords, LinkedList<Integer> oldcords) {
+		for (int i = 0; i < newcords.size(); i++) {
+			boolean case2a = newcords.get(i) > 19;
+			boolean case2b = this.tiles.get(oldcords.get(i)).gettilestatus();
+			boolean case2 = (case2a && case2b ); 
+			
+			if(case2) {
+				continue;
+			} else {
+				boolean case1 = newcords.get(i) < 0;
+				boolean case3 = (this.tiles.get(newcords.get(i)) != null && this.tiles.get(newcords.get(i)) != this.selectedtile);
+				if (case1 || case3) {
+					return true;
+				}		
+			}
 		}
 		return false;
 

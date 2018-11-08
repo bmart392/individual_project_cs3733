@@ -1,7 +1,9 @@
 package puzzle.user_interface;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.LinkedList;
 
 import javax.swing.JPanel;
@@ -36,20 +38,10 @@ public class PuzzleDrawingPanel extends JPanel{
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
+
+		this.tileheight = (this.getHeight() - (7*this.buffer))/6;
 		
-		int raw_height = (this.getHeight() - (6*this.buffer)) % 5;
-		if (raw_height!= 0) {
-			this.tileheight = ((this.getHeight() - (6*this.buffer)) - raw_height)/5;
-		} else {
-			this.tileheight = (this.getHeight() - (6*this.buffer));
-		}
-		
-		int raw_width = (this.getWidth() - (6*this.buffer)) % 5;
-		if (raw_width!= 0) {
-			this.tilewidth = ((this.getWidth() - (5*this.buffer)) - raw_width)/5;
-		} else {
-			this.tilewidth = (this.getWidth() - (5*this.buffer))/4;
-		}
+		this.tilewidth = (this.getWidth() - (5*this.buffer))/4;
 		
 		LinkedList<BackgroundTile> drawntiles = new LinkedList<BackgroundTile>();
 		
@@ -59,11 +51,11 @@ public class PuzzleDrawingPanel extends JPanel{
 						
 			if (currentTile.gettilestatus()) { 
 				g.setColor(Color.red);
-			} else if (currentTile == layout.getselectedtile()) {
-				g.setColor(Color.blue);
 			} else {
 				g.setColor(Color.gray);
-			}
+			} if (currentTile == layout.getselectedtile()) {
+				g.setColor(Color.blue);
+			} 
 			
 			int col = index % 4;
 			int xpos = buffer * (col + 1) + (col * tilewidth);
@@ -75,9 +67,19 @@ public class PuzzleDrawingPanel extends JPanel{
 			int height = currentTile.getsizey() * tileheight + (currentTile.getsizey() - 1) * buffer;
 			
 			g.fillRect(xpos, ypos , width , height);
+			//g.drawRect(0 , 0, width, height);
 			
 			drawntiles.add(currentTile);
 		}
+		
+		Graphics2D g2 = (Graphics2D) g;
+		
+		g2.setStroke(new BasicStroke(5));
+		g2.setColor(Color.green);
+		g2.drawRect(0 , 0, this.getWidth() - 1, this.getHeight() - (int)(1.5 * buffer) - tileheight);
+		
+		g2.setColor(Color.black);
+		g2.drawLine((int)(1.5 * buffer) + tilewidth, this.getHeight() - (int)(1.5 * buffer) - tileheight, (int)(3.5 * buffer) + 3 * tilewidth, this.getHeight() - (int)(1.5 * buffer) - tileheight);
 	}
 
 
