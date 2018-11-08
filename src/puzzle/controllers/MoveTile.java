@@ -26,13 +26,10 @@ public class MoveTile {
 	public void move(JButton buttonpressed) {
 			
 			// check if there is currently a tile selected
-			if (!this.model.isatileselected()) { return; }
-			
-			String directionText = buttonpressed.getText();
-			
+			if (!this.model.isatileselected()) { return; }			
 			
 			// Get the direction the tile needs to move
-			Direction indicateddirection = Direction.valueOf(directionText);
+			Direction indicateddirection = Direction.valueOf(buttonpressed.getText());
 		
 			// get current position of tile
 			LinkedList<Integer> currenttileposition = this.model.getcurrenttilelocation();
@@ -43,12 +40,14 @@ public class MoveTile {
 
 			// Check to see if this move wins
 			if(this.model.iswinningmove(newcords)) {
-				// Fill in with proper winning code later
+				
 				this.boundary.setwinlabel("Congrats! You won!");
+				
+			} else {
+				
+				// check if new position is valid (i.e. goes off the board or tries to be in the location of another tile)
+				if(this.model.ismoveillegal(newcords, currenttileposition)) { return; }
 			}
-			
-			// check if new position is valid (i.e. goes off the board or tries to be in the location of another tile)
-			if(this.model.ismoveillegal(newcords, currenttileposition)) { return; }
 			
 			// set the new location of the tile to be the new position
 			this.model.setselectedtilelocation(newcords, currenttileposition);

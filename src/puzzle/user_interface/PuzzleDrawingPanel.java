@@ -49,7 +49,7 @@ public class PuzzleDrawingPanel extends JPanel{
 			BackgroundTile currentTile = layout.gettile(index);
 			if (currentTile == null || drawntiles.contains(currentTile)) { continue; }
 						
-			if (currentTile.gettilestatus()) { 
+			if (currentTile.isThisTileWinner()) { 
 				g.setColor(Color.red);
 			} else {
 				g.setColor(Color.gray);

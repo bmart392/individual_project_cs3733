@@ -37,16 +37,16 @@ public class PuzzleBoard {
 	}
 	
 	PuzzleBoard(){
-		BackgroundTile piece1 = new BackgroundTile("1", 1, 2, false);
-		BackgroundTile piece2 = new BackgroundTile("2", 2, 2, true);
-		BackgroundTile piece3 = new BackgroundTile("3", 1, 2, false);
-		BackgroundTile piece4 = new BackgroundTile("4", 1, 2, false);
-		BackgroundTile piece5 = new BackgroundTile("5", 1, 1, false);
-		BackgroundTile piece6 = new BackgroundTile("6", 1, 1, false);
-		BackgroundTile piece7 = new BackgroundTile("7", 1, 2, false);
-		BackgroundTile piece8 = new BackgroundTile("8", 1, 1, false);
-		BackgroundTile piece9 = new BackgroundTile("9", 1, 1, false);
-		BackgroundTile piece10 = new BackgroundTile("10", 2, 1, false);
+		BackgroundTile piece1 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece2 = new BackgroundTile(2, 2, true);
+		BackgroundTile piece3 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece4 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece5 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece6 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece7 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece8 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece9 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece10 = new BackgroundTile(2, 1, false);
 		
 		this.tiles = new LinkedList<BackgroundTile>();
 		this.tiles.add(piece1);
@@ -82,17 +82,18 @@ public class PuzzleBoard {
 		this.selectedtile = null;
 	}
 	
+	// Creates a board that is one move away from winning.
 	PuzzleBoard(int nothing){
-		BackgroundTile piece1 = new BackgroundTile("1", 1, 2, false);
-		BackgroundTile piece2 = new BackgroundTile("2", 2, 2, true);
-		BackgroundTile piece3 = new BackgroundTile("3", 1, 2, false);
-		BackgroundTile piece4 = new BackgroundTile("4", 1, 2, false);
-		BackgroundTile piece5 = new BackgroundTile("5", 1, 1, false);
-		BackgroundTile piece6 = new BackgroundTile("6", 1, 1, false);
-		BackgroundTile piece7 = new BackgroundTile("7", 1, 2, false);
-		BackgroundTile piece8 = new BackgroundTile("8", 1, 1, false);
-		BackgroundTile piece9 = new BackgroundTile("9", 1, 1, false);
-		BackgroundTile piece10 = new BackgroundTile("10", 2, 1, false);
+		BackgroundTile piece1 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece2 = new BackgroundTile(2, 2, true);
+		BackgroundTile piece3 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece4 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece5 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece6 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece7 = new BackgroundTile(1, 2, false);
+		BackgroundTile piece8 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece9 = new BackgroundTile(1, 1, false);
+		BackgroundTile piece10 = new BackgroundTile(2, 1, false);
 		
 		this.tiles = new LinkedList<BackgroundTile>();
 		this.tiles.add(piece1);
@@ -130,7 +131,7 @@ public class PuzzleBoard {
 	
 	public void resettiles() {
 		
-		this.tiles = new PuzzleBoard(0).gettiles();
+		this.tiles = new PuzzleBoard().gettiles();
 		
 		this.selectedtile = null;
 	}
@@ -170,32 +171,25 @@ public class PuzzleBoard {
 	}
 	
 	public boolean iswinningmove(LinkedList<Integer> cords) {
-		if (!this.selectedtile.gettilestatus()) {
-			return false;
-		}
-		for (int i = 0; i < cords.size(); i++) {
-			if (!(cords.get(i) == 17 || cords.get(i) == 18 || cords.get(i) == 21 || cords.get(i) == 22)) {
-				return false;
-			}			
-		}
-		return true;
-
+		
+		boolean isTileWinnerCase = this.selectedtile.isThisTileWinner();
+		boolean isTileInWinningPositionsCase = cords.contains(21) && cords.contains(22);
+		
+		// Check if selected tile is capable of moving to win the game and has coordinates in the winning locations, if true then it is the winning move
+		if (isTileWinnerCase && isTileInWinningPositionsCase) {	return true;} else { return false; }		
 	}
 	
 	public boolean ismoveillegal(LinkedList<Integer> newcords, LinkedList<Integer> oldcords) {
 		for (int i = 0; i < newcords.size(); i++) {
-			boolean case2a = newcords.get(i) > 19;
-			boolean case2b = this.tiles.get(oldcords.get(i)).gettilestatus();
-			boolean case2 = (case2a && case2b ); 
 			
-			if(case2) {
-				continue;
-			} else {
-				boolean case1 = newcords.get(i) < 0;
-				boolean case3 = (this.tiles.get(newcords.get(i)) != null && this.tiles.get(newcords.get(i)) != this.selectedtile);
-				if (case1 || case3) {
-					return true;
-				}		
+			int newcord = newcords.get(i);
+			
+			boolean isTileAboveBoardCase = newcord < 0;
+			boolean isTileBelowBoardCase = newcord > 19;
+			boolean isCellFullCase = isFullWithOther(newcord);
+			
+			if (isTileAboveBoardCase || isTileBelowBoardCase || isCellFullCase) {
+				return true;	
 			}
 		}
 		return false;
@@ -209,6 +203,10 @@ public class PuzzleBoard {
 		for (int i = 0; i < newcords.size(); i++) {
 			tiles.set(newcords.get(i), selectedtile);						
 		}
+	}
+	
+	boolean isFullWithOther(int i) {
+		return tiles.get(i) != null && tiles.get(i) != selectedtile;
 	}
 
 }
