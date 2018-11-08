@@ -46,7 +46,7 @@ public class MoveTile {
 			} else {
 				
 				// check if new position is valid (i.e. goes off the board or tries to be in the location of another tile)
-				if(this.model.ismoveillegal(newcords, currenttileposition)) { return; }
+				if(this.model.ismoveillegal(newcords)) { return; }
 			}
 			
 			// set the new location of the tile to be the new position

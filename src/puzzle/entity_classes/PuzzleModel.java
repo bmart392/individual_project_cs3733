@@ -51,8 +51,8 @@ public class PuzzleModel {
 		}
 	
 	// Checks to see if a move is legal and returns true if the move is not legal
-	public boolean ismoveillegal(LinkedList<Integer> possiblenewcords, LinkedList<Integer> oldcords ) {
-		return this.currentpuzzle.ismoveillegal(possiblenewcords, oldcords);
+	public boolean ismoveillegal(LinkedList<Integer> possiblenewcords) {
+		return this.currentpuzzle.ismoveillegal(possiblenewcords);
 	}
 	
 	public boolean iswinningmove(LinkedList<Integer> possiblenewcords) {

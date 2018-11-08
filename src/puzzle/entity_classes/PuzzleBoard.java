@@ -30,12 +30,7 @@ public class PuzzleBoard {
 	 *  
 	 * starting piece configuration
 	*/
-	
-	PuzzleBoard(LinkedList<BackgroundTile> tiles){
-		this.tiles = tiles;
-		this.selectedtile = null;
-	}
-	
+		
 	PuzzleBoard(){
 		BackgroundTile piece1 = new BackgroundTile(1, 2, false);
 		BackgroundTile piece2 = new BackgroundTile(2, 2, true);
@@ -141,7 +136,7 @@ public class PuzzleBoard {
 	}
 	
 	public void settiles(LinkedList<BackgroundTile> tiles){
-		this.tiles = tiles;;
+		this.tiles = tiles;
 	}
 	
 	public LinkedList<BackgroundTile> gettiles(){
@@ -163,7 +158,7 @@ public class PuzzleBoard {
 	public LinkedList<Integer> gettilelocation() {
 		LinkedList<Integer> tilelocations = new LinkedList<Integer>();
 		
-		for ( int i = 0; i < this.tiles.size(); i++ )
+		for ( int i = 0; i < this.getlengthtiles(); i++ )
 			if( tiles.get(i) == this.selectedtile) {
 				tilelocations.add(i);
 			}
@@ -179,18 +174,28 @@ public class PuzzleBoard {
 		if (isTileWinnerCase && isTileInWinningPositionsCase) {	return true;} else { return false; }		
 	}
 	
-	public boolean ismoveillegal(LinkedList<Integer> newcords, LinkedList<Integer> oldcords) {
+	public boolean ismoveillegal(LinkedList<Integer> newcords) {
 		for (int i = 0; i < newcords.size(); i++) {
 			
 			int newcord = newcords.get(i);
 			
 			boolean isTileAboveBoardCase = newcord < 0;
+			System.out.println(isTileAboveBoardCase);
 			boolean isTileBelowBoardCase = newcord > 19;
-			boolean isCellFullCase = isFullWithOther(newcord);
+			System.out.println(isTileBelowBoardCase);
 			
-			if (isTileAboveBoardCase || isTileBelowBoardCase || isCellFullCase) {
-				return true;	
+			if (isTileAboveBoardCase || isTileBelowBoardCase) {
+				return true;
 			}
+			
+			boolean isCellFullCase = isFullWithOther(newcord);
+			System.out.println(isCellFullCase);
+			
+			if (isCellFullCase) {
+				return true;
+			}
+				
+			
 		}
 		return false;
 
